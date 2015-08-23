@@ -4,10 +4,10 @@
 class Board
 
   def initialize
-    @board = Array.new(3) { Array.new(3, " ") }  #initially filled with 9 empty spaces
+    @board = Array.new(3) { Array.new(3, " ") }  #initialized empty board filled with 9 spaces
   end
 
-  def printInstructions #Game Instructions
+  def printInstructions                         #game introduction, rules, and instructions. 
     puts "Welcome to Ben's world famous Tic Tac Toe Game",
     
     "\nThe object of Tic Tac Toe is to get three in",
@@ -26,8 +26,8 @@ class Board
     print "\n"
   end
 
-  def printBoard  #Creates board that is updated each turn
-    (0..2).each do |row|
+  def printBoard                               #creates board to be looped/updated during game
+    (0..2).each do |row|                       #format will match the board printed from the instructions
       print "       "
       (0..2).each do |col|
         print @board[row][col]
@@ -81,30 +81,30 @@ class Board
 end
 
 board = Board.new
-active_player = "X"
+active_player = "X"                             #start with X user
 
-puts "\n" * 100         #spacing to eliminate previous game boards
-board.printInstructions
+puts "\n" * 100                                 #spacing to eliminate previous game boards from view
+board.printInstructions                         #let the games begin
 
-while board.findWinner == "U"
+while board.findWinner == "U"                   #while loop for gameplay
 
   puts " #{active_player}'s turn. Choose a box!",
        "        **----**"
   print "           "
-  move = gets.chomp.to_i - 1
+  move = gets.chomp.to_i - 1                    
   row = move / 3
   col = move % 3
 
-  puts "\n" * 100        #spacing to eliminate previous game boards
+  puts "\n" * 100        
 
-  if board.dropPiece(active_player, row, col)
+  if board.dropPiece(active_player, row, col)   #Take turns
     if active_player == "X"
       active_player = "O"
     else
       active_player = "X"
     end
   else
-    puts "                 Invalid move, please select again\n\n"
+    puts "                 Invalid move, please select again\n\n" #prevent any duplicates or other invalid moves
   end
 
   board.printBoard
@@ -115,10 +115,10 @@ winner = board.findWinner
 puts "\n" * 100
 puts "   ================="
 
-  if winner == "C"
-    puts "   IT IS A DRAW!"
+  if winner == "C"                              #if game is a draw
+    puts "   IT IS A DRAW!"                    
   else
-    puts "     #{winner} ' S   W I N"
+    puts "     #{winner} ' S   W I N"           #string will display winner
   end
 
 puts "   ================="
