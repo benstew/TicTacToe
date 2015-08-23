@@ -116,7 +116,7 @@ puts "\n" * 100
 puts "   ================="
 
   if winner == "C"                              #if game is a draw
-    puts "   IT IS A DRAW!"                    
+    puts "     IT IS A DRAW!"                    
   else
     puts "     #{winner} ' S   W I N"           #string will display winner
   end
